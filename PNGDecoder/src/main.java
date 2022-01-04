@@ -86,7 +86,12 @@ public class main {
 		//ColorTriple ts = new ColorTriple(ct.toInt());
 		//System.out.println(ct.toInt() + " " + ts.toInt());
 		//new PNG(new File("C:\\Users\\Alan\\Desktop\\Fluid_Mosaic_Model.png"));
-		//new PNG(new File("C:\\Users\\Alan\\Desktop\\test1.png"));
+		long t1 = 65244;
+		long t2 = 65210;
+		//System.out.println(t1+t2);
+		//System.exit(0);
+		
+		//new PNG(new File("C:\\Users\\Alan\\Desktop\\test2.png"));
 		//System.exit(0);
 		
 		// TODO Auto-generated method stub

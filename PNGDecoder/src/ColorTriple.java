@@ -2,7 +2,9 @@
 public class ColorTriple 
 {
 	public long R,G,B;
-	private double sR, sG, sB;
+	double sR;
+	double sG;
+	double sB;
 	private int Depth = 8;
 	protected int[] rgb;
 	public ColorTriple(int r, int g, int b)
@@ -20,6 +22,15 @@ public class ColorTriple
 		R = Integer.toUnsignedLong(r);
 		G = Integer.toUnsignedLong(g);
 		B = Integer.toUnsignedLong(b);
+		Depth = depth;
+		process();
+	}
+	public ColorTriple(long r, long g, long b, int depth)
+	{
+		//System.out.println("MAN DEPTH");
+		R = r;
+		G = g;
+		B = b;
 		Depth = depth;
 		process();
 	}
@@ -84,7 +95,7 @@ public class ColorTriple
 		return "" + Long.toUnsignedString(R) + " " + Long.toUnsignedString(G) + " " + Long.toUnsignedString(B);
 	}
 	
-	private void process()
+	public void process()
 	{
 		//Get fractions for later use.
 		sR = R/(Math.pow(2, Depth)-1);
@@ -127,13 +138,14 @@ public class ColorTriple
 		process();
 	}
 	
-	public void add(ColorTriple ct)
+	public void add(ColorTriple t1)
 	{
-		R += ct.R;
+		//System.out.println(this.toString()+ " " + t1);
+		R = Integer.toUnsignedLong((int)R+ (int)t1.R);
 		R %= (long) Math.pow(2, Depth);
-		G += ct.G;
+		G += t1.G;
 		G %= (long) Math.pow(2, Depth);
-		B += ct.B;
+		B += t1.B;
 		B %= (long) Math.pow(2, Depth);
 		process();
 	}
@@ -150,9 +162,16 @@ public class ColorTriple
 	
 	public ColorTriple clone()
 	{
-		return new ColorTriple((int)R,(int)G,(int)B,Depth);
+		return new ColorTriple(R,G,B,Depth);
 	}
 	
-	
+	public static int getUpperByte(int a)
+	{
+		return Integer.divideUnsigned(a, (int) Math.pow(2,8));
+	}
+	public static int getLowerByte(int a)
+	{
+		return (int) (Byte.toUnsignedInt((byte)a));
+	}
 	
 }
