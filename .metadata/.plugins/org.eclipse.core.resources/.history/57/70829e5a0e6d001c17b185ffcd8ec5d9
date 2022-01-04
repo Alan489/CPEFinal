@@ -86,8 +86,8 @@ public class main {
 		//ColorTriple ts = new ColorTriple(ct.toInt());
 		//System.out.println(ct.toInt() + " " + ts.toInt());
 		//new PNG(new File("C:\\Users\\Alan\\Desktop\\Fluid_Mosaic_Model.png"));
-		//new PNG(new File("C:\\Users\\Alan\\Desktop\\test1.png"));
-		//System.exit(0);
+		new PNG(new File("C:\\Users\\Alan\\Desktop\\test1.png"));
+		System.exit(0);
 		
 		// TODO Auto-generated method stub
 		System.out.println(Signature);

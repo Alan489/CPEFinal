@@ -82,30 +82,61 @@ public class main {
 	
 	public static void main(String[] args) throws Exception {
 		
-		//ColorTriple ct = new ColorTriple(0,0,0);
-		//ColorTriple ts = new ColorTriple(ct.toInt());
-		//System.out.println(ct.toInt() + " " + ts.toInt());
+		ColorTriple ct = new ColorTriple(0,0,0);
+		ColorTriple ts = new ColorTriple(ct.toInt());
+		System.out.println(ct.toInt() + " " + ts.toInt());
 		//new PNG(new File("C:\\Users\\Alan\\Desktop\\Fluid_Mosaic_Model.png"));
-		//new PNG(new File("C:\\Users\\Alan\\Desktop\\test1.png"));
-		//System.exit(0);
+		new PNG(new File("C:\\Users\\Alan\\Desktop\\test1.png"));
+		System.exit(0);
 		
 		// TODO Auto-generated method stub
 		System.out.println(Signature);
 		if (args.length == 0)
 		{
-			System.out.println("No command line arguments detected. Enter file you wish to display.");
+			System.out.println("No command line arguments detected. Type \"Help\"/\"?\" for interface help or type \"Options\" for command line options. Type \"Exit\" to exit.");
 			Scanner in = new Scanner(System.in);
-			File f = getFile(in);
-			while (f == null)
+			boolean acceptInput = true;
+
+			
+			while (acceptInput)
 			{
-				System.out.println("Invalid file.");
-			}
-			in.close();
-			if (f == null)
-				System.out.println("Invalid file.");
-			else
-			{
-				new PNG(f);
+				switch(getInput(in))
+				{
+					case "?":
+					case "help":
+						System.out.println("Help");
+						System.out.println("\tDisplay - Begins prompt to open a file.");
+						System.out.println("\tValidate - Begins prompt to validate a PNG file.");
+						System.out.println("\tX - Exits the program.");
+						break;
+						
+					case "display":
+						
+						break;
+					
+					case "validate":
+						
+						File f = getFile(in);
+						if (f == null)
+							System.out.println("Invalid file.");
+						else
+						{
+							new PNG(f);
+						}
+						break;
+						
+					case "x":
+					case "exit":
+						System.out.println("Goodbye!");
+						in.close();
+						System.exit(0);
+						break;
+						
+						
+					default:
+						System.out.println("Command not recognized. Type \"Help\"/\"?\"");
+				}
+				
 			}
 			
 		}
