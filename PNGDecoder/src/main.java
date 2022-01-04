@@ -104,6 +104,7 @@ public class main {
 			while (f == null)
 			{
 				System.out.println("Invalid file.");
+				f = getFile(in);
 			}
 			in.close();
 			if (f == null)
