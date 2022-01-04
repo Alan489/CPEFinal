@@ -1,0 +1,21 @@
+import java.util.ArrayList;
+
+public class palette 
+{
+	private ArrayList<ColorTriple> paletteList;
+	public palette()
+	{
+		paletteList =  new ArrayList<>();
+	}
+	
+	public void addColor(ColorTriple ct)
+	{
+		paletteList.add(ct);
+	}
+	
+	public ColorTriple getColor(int a)
+	{
+		return paletteList.get(a);
+	}
+	
+}

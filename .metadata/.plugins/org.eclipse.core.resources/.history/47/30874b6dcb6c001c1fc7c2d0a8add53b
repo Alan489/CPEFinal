@@ -1,0 +1,86 @@
+
+public class ColorTriple 
+{
+	private long R,G,B;
+	private double sR, sG, sB;
+	private int Depth = 8;
+	protected int[] rgb;
+	public ColorTriple(int r, int g, int b)
+	{
+		R = r;
+		G = g;
+		B = b;
+		Depth = 8;
+		process();
+	}
+	
+	public ColorTriple(int r, int g, int b, int depth)
+	{
+		R = r;
+		G = g;
+		B = b;
+		Depth = depth;
+		process();
+	}
+	
+	public void set(int r, int g, int b)
+	{
+		R = r;
+		G = g;
+		B = b;
+		Depth = 8;
+		process();
+	}
+	
+	public void set(int r, int g, int b, int depth)
+	{
+		R = r;
+		G = g;
+		B = b;
+		Depth = depth;
+		process();
+	}
+	
+	private void process()
+	{
+		R = (int) (255.0 * (R/(Math.pow(2, Depth)-1))); 
+		sR = R/(Math.pow(2, Depth)-1);
+		G = (int) (255.0 * (G/(Math.pow(2, Depth)-1))); 
+		sG = G/(Math.pow(2, Depth)-1);
+		B = (int) (255.0 * (B/(Math.pow(2, Depth)-1))); 
+		sB = B/(Math.pow(2, Depth)-1);
+	}
+	
+	public int getR()
+	{
+		return (int)R;
+	}
+	public int getG()
+	{
+		return (int)G;
+	}
+	public int getB()
+	{
+		return (int)B;
+	}
+	public int[] getRGB()
+	{
+		return rgb;
+	}
+	public int toInt()
+	{
+		return (int) (R* (int) Math.pow(2, 16) + G* (int) Math.pow(2, 8) + B);
+	}
+	public void gammaCorrect(double gamma)
+	{
+		double decodingExpo = 1.0 / (gamma * 100);
+		
+		//System.out.print(sR + " " + sG + " " + sB + "\t");
+		
+		R = (int) (255.0 * Math.pow(sR, decodingExpo));
+		G = (int) (255.0 * Math.pow(sG, decodingExpo));
+		B = (int) (255.0 * Math.pow(sB, decodingExpo));
+		//System.out.println(R + " " + G + " " + B);
+		process();
+	}
+}
